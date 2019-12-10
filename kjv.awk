@@ -51,9 +51,9 @@ function parseref(ref, arr) {
 		return "unknown"
 	}
 
-	if (match(ref, "^:?[1-9]+[0-9]*")) {
+	if (match(ref, /^(:|：)?[1-9]+[0-9]*/)) {
 		# 2, 3, 3a, 4, 5, 6, 9
-		if (sub("^:", "", ref)) {
+		if (sub("^(:|：)", "", ref)) {
 			arr["chapter"] = int(substr(ref, 1, RLENGTH - 1))
 			ref = substr(ref, RLENGTH)
 		} else {
@@ -71,7 +71,7 @@ function parseref(ref, arr) {
 		return "unknown"
 	}
 
-	if (match(ref, "^:[1-9]+[0-9]*")) {
+	if (match(ref, "^(:|：)[1-9]+[0-9]*")) {
 		# 3, 3a, 5, 6
 		arr["verse"] = int(substr(ref, 2, RLENGTH - 1))
 		ref = substr(ref, RLENGTH + 1)
@@ -119,7 +119,7 @@ function parseref(ref, arr) {
 		return "unknown"
 	}
 
-	if (match(ref, "^:[1-9]+[0-9]*$")) {
+	if (match(ref, "^(:|：)[1-9]+[0-9]*$")) {
 		# 6
 		arr["verse_end"] = int(substr(ref, 2))
 		return "range_ext"
