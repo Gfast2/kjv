@@ -1,5 +1,9 @@
 # kjv [![AUR](https://img.shields.io/badge/AUR-kjv--git-blue.svg)](https://aur.archlinux.org/packages/kjv-git/)
 
+<center>
+  <img src='./docs/chinese_kjv.gif' />
+</center>
+
 Read the Word of God from your terminal. Here I tweak this fork that can searching and showing a Simpliefied Chinese Version. The chinese bible is mined by my other project [***bible-tsv-generator***](https://github.com/Gfast2/bible-tsv-generator).
 
 The chinese bible version is called **"cns"**
