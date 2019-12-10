@@ -39,7 +39,7 @@ function parseref(ref, arr) {
 	# 8. <book>/search
 	# 9. <book>:?<chapter>/search
 
-	if (match(ref, "^[1-9]?[a-zA-Z ]+")) {
+	if (match(ref, /^[1-9]?([a-zA-Z ]|\w)+/)) {
 		# 1, 2, 3, 3a, 4, 5, 6, 8, 9
 		arr["book"] = substr(ref, 1, RLENGTH)
 		ref = substr(ref, RLENGTH + 1)
@@ -156,14 +156,15 @@ function printverse(verse,    word_count, characters_printed) {
 		return
 	}
 
-	word_count = split(verse, words, " ")
+	word_count = split(verse, words, "")
 	for (i = 1; i <= word_count; i++) {
+    # detect in or not start a new line
 		if (characters_printed + length(words[i]) + (characters_printed > 0 ? 1 : 0) > MAX_WIDTH - 8) {
 			printf("\n\t")
 			characters_printed = 0
 		}
 		if (characters_printed > 0) {
-			printf(" ")
+			#printf(" ")
 			characters_printed++
 		}
 		printf("%s", words[i])
